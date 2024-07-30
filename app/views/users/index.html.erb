@@ -1,0 +1,52 @@
+<div class="show_users">
+
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Users</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Document Value</th>
+        <th>Birth Date</th>
+        <th>Store Name</th>
+        <th>Store Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.documentValue %></td>
+          <td><%= user.nasc %></td>
+          <td>
+            <% if user.store %>
+              <%= user.store.name %>
+            <% else %>
+              Not associated
+            <% end %>
+          </td>
+          <td>
+            <% if user.store %>
+              <%= user.store.address %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+          <td><%= link_to "Show", user %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <%= paginate @users %>
+  </div>
+
+</div>
+
+<%= link_to "New user", new_user_path %><br>
+<%= link_to "New store", new_store_path %><br>
+<%= link_to "New equipe composer", new_equipe_composer_path %><br>

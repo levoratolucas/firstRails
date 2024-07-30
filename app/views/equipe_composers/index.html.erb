@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Equipe composers</h1>
+
+<div id="equipe_composers">
+  <% @equipe_composers.each do |equipe_composer| %>
+    <p>
+      <%= link_to equipe_composer.name, equipe_composer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New equipe composer", new_equipe_composer_path %>

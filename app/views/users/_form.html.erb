@@ -1,0 +1,38 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+  <%= form.label :store_id %>
+  <%= form.collection_select :store_id, Store.all, :id, :name, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :documentValue, style: "display: block" %>
+    <%= form.text_field :documentValue %>
+  </div>
+
+  <div>
+    <%= form.label :nasc, style: "display: block" %>
+    <%= form.date_field :nasc %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

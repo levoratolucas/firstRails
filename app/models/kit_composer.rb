@@ -1,0 +1,3 @@
+class KitComposer < ApplicationRecord
+    
+end

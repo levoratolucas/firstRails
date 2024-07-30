@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: 342711Lu#
+  host: localhost
+  port: 5433
+
+development:
+  <<: *default
+  database: seu_banco_de_dados_development
+
+test:
+  <<: *default
+  database: seu_banco_de_dados_test
+
+production:
+  <<: *default
+  database: levoratech
+  username: levoratech
+  password: <%= ENV['DATABASE_PASSWORD'] %>

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Document Value:</strong>
+  <%= @user.documentValue %>
+</p>
+
+<p>
+  <strong>Birth Date:</strong>
+  <%= @user.nasc %>
+</p>
+
+<% if @user.store %>
+  <h3>Store Information</h3>
+  <p>
+    <strong>Store Name:</strong>
+    <%= @user.store.name %>
+  </p>
+  <p>
+    <strong>Store Address:</strong>
+    <%= @user.store.address %>
+  </p>
+<% else %>
+  <p>This user is not associated with any store.</p>
+<% end %>
+
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
+  <%= button_to "Destroy this user", @user, method: :delete, data: { confirm: "Are you sure?" } %>
+</div>

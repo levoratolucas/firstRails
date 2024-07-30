@@ -1,0 +1,2 @@
+module EquipeComposersHelper
+end

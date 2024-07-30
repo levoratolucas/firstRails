@@ -1,0 +1,33 @@
+<%= form_with(model: equipe_composer, local: true) do |form| %>
+  <% if equipe_composer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(equipe_composer.errors.count, "error") %> prohibited this equipe_composer from being saved:</h2>
+      <ul>
+        <% equipe_composer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :users %>
+    <div>
+      <% User.all.each do |user| %>
+        <div>
+          <%= check_box_tag "equipe_composer[user_ids][]", user.id, equipe_composer.user_ids.include?(user.id) %>
+          <%= user.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h2>Equipe Composer Details</h2>
+<p><%= render @equipe_composer %></p>
+
+<h3>Users in this Team</h3>
+<% if @equipe_composer.users.any? %>
+  <% @equipe_composer.users.each do |user| %>
+    <p>
+       <%= link_to user.name, edit_user_path(user) %> |
+      <br>
+      <strong>Document Value:</strong> <%= user.documentValue %>
+      <br>
+      <strong>Birth Date:</strong> <%= user.nasc %>
+    </p>
+  <% end %>
+<% else %>
+  <p>No users in this team.</p>
+<% end %>
+
+<div>
+  <%= link_to "Edit this equipe composer", edit_equipe_composer_path(@equipe_composer) %> |
+  <%= link_to "Back to equipe composers", equipe_composers_path %>
+  <%= button_to "Destroy this equipe composer", @equipe_composer, method: :delete %>
+</div>
